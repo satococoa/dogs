@@ -2,7 +2,6 @@
 require 'sinatra'
 require 'open-uri'
 require 'nokogiri'
-require 'json'
 
 configure do
   set :root, File.dirname(__FILE__)
@@ -46,10 +45,6 @@ post '/' do
     }
     @puppies << puppy
   end
-  
-  # Youtubeの動画を取得
-  youtube_base = 'http://gdata.youtube.com/feeds/api/videos?alt=json&max-results=10&vq='+
-    escape(@@kenshu[params[:kenshu].to_i])
-  movies = JSON.parse(open(youtube_base).read)
+  @kenshu = @@kenshu[params[:kenshu].to_i]
   erb :index
 end

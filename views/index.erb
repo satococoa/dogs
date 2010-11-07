@@ -1,51 +1,111 @@
 <html>
 <head>
-  <meta charset="utf-8">
-  <title>犬検索</title>
+	<meta charset="utf-8">
+	<title>犬検索</title>
 </head>
 <body>
-  <div id="search">
-    <form action="." method="post">
-<p>犬種：<br>
-<select name="kenshu">
-  <% @options.each do |opt| %>
-    <option value="<%=h opt[:value] %>"<%= 'selected' if params[:kenshu] == opt[:value]%>><%=h opt[:label] %></option>
-  <% end %>
-</select></p>
-      <input type="submit" name="keyword" value="検索">
-    </form>
-  </div>
-  
-  <% if @puppies.nil? %>
-    <p>犬種を選んで検索ボタンを押してください。</p>
-  <% elsif @puppies.length == 0 %>
-    <p>検索結果が見つかりませんでした。</p>
-  <% else %>
-  <br>
-  <div id="result">
-<table border="1" width="800" cellspacing="0" cellpadding="5" bordercolor="#333333">
-<tr>
-	<th>写真</th>
-	<th>詳細</th>
-</tr>
+	<div id="search">
+		<form action="." method="post">
+			<p>犬種：<br>
+				<select name="kenshu">
+					<% @options.each do |opt| %>
+					<option value="<%=h opt[:value] %>"<%= 'selected' if params[:kenshu] == opt[:value]%>><%=h opt[:label] %></option>
+					<% end %>
+				</select>
+			</p>
+			<input type="submit" name="keyword" value="検索">
+		</form>
+	</div>
 
-<% @puppies.each do |puppy| %>
-<tr>
-	<td><img border="0" src="<%=h puppy[:image] %>" alt="犬１"></td>
-	<td bgcolor="#FFFFFF" valign="top" >
-	    <a href=<%=h puppy[:url] %>>詳細ページへ</a><br>
-        <b>色 :</b> <%=h puppy[:color] %><br>
-        <b>出生地（都道府県）：</b><%=h puppy[:place] %><br>
-        <b>価格：</b><%=h puppy[:price] %><br>
-        <b>誕生日：</b><%=h puppy[:birth] %><br>
-        <b>紹介文：</b><%=h puppy[:comment] %>
-	</td>
-</tr>
-<% end %>
+	<% if @puppies.nil? %>
+	<p>犬種を選んで検索ボタンを押してください。</p>
+	<% elsif @puppies.length == 0 %>
+	<p>検索結果が見つかりませんでした。</p>
+	<% else %>
+	<!-- ++Begin Video Search Control Wizard Generated Code++ -->
+	  <!--
+	  // Created with a Google AJAX Search Wizard
+	  // http://code.google.com/apis/ajaxsearch/wizards.html
+	  -->
 
-</table>
-  </div>
-  <% end %>
-  <a href="#top">▲このページのTOPへ</a>
-  </body>
+	  <!--
+	  // The Following div element will end up holding the Video Search Control.
+	  // You can place this anywhere on your page.
+	  -->
+	  <div id="videoControl">
+	    <span style="color:#676767;font-size:11px;margin:10px;padding:4px;">Loading...</span>
+	  </div>
+
+	  <!-- Ajax Search Api and Stylesheet
+	  // Note: If you are already using the AJAX Search API, then do not include it
+	  //       or its stylesheet again
+	  //
+	  // The Key Embedded in the following script tag is designed to work with
+	  // the following site:
+	  // http://ma6dogs.heroku.com/
+	  -->
+	  <script src="http://www.google.com/uds/api?file=uds.js&v=1.0&source=uds-vsw&key=ABQIAAAAeNjTQctlY-tvVGS4bmY4bxSqRARmh7rTe2UoP97S8EQTWdlVoBRNc1FNRVcDqmRGCqTfzxBNiJtTMw"
+	    type="text/javascript"></script>
+	  <style type="text/css">
+	    @import url("http://www.google.com/uds/css/gsearch.css");
+	  </style>
+	<style>
+	#videoControl {
+		width: 800px;
+	}
+	#videoControl .searchForm_gsvsc {
+		display: none !important;
+	}
+	</style>
+	  <!-- Video Search Control and Stylesheet -->
+	  <script type="text/javascript">
+	    window._uds_vsw_donotrepair = true;
+	  </script>
+	  <script src="http://www.google.com/uds/solutions/videosearch/gsvideosearch.js?mode=new"
+	    type="text/javascript"></script>
+	  <style type="text/css">
+	    @import url("http://www.google.com/uds/solutions/videosearch/gsvideosearch.css");
+	  </style>
+
+	  <script type="text/javascript">
+	    function LoadVideoSearchControl() {
+	      var options = {
+	        twoRowMode : true
+	      };
+	      var videoSearch = new GSvideoSearchControl(
+	                              document.getElementById("videoControl"),
+	                              [{ query : "<%= @kenshu || 'dogs' %>"}], null, null, options);
+	    }
+	    // arrange for this function to be called during body.onload
+	    // event processing
+	    GSearch.setOnLoadCallback(LoadVideoSearchControl);
+	  </script>
+	<!-- --End Video Search Control Wizard Generated Code-- -->
+	<br>
+	<div id="result">
+		<table border="1" width="800" cellspacing="0" cellpadding="5" bordercolor="#333333">
+			<tr>
+				<th>写真</th>
+				<th>詳細</th>
+			</tr>
+
+			<% @puppies.each do |puppy| %>
+			<tr>
+				<td><img border="0" src="<%=h puppy[:image] %>" alt="犬１"></td>
+				<td bgcolor="#FFFFFF" valign="top" >
+					<a href=<%=h puppy[:url] %>>詳細ページへ</a><br>
+					<b>色 :</b> <%=h puppy[:color] %><br>
+					<b>出生地（都道府県）：</b><%=h puppy[:place] %><br>
+					<b>価格：</b><%=h puppy[:price] %><br>
+					<b>誕生日：</b><%=h puppy[:birth] %><br>
+					<b>紹介文：</b><%=h puppy[:comment] %>
+				</td>
+			</tr>
+			<% end %>
+
+		</table>
+	</div>
+	<% end %>
+	<a href="#top">▲このページのTOPへ</a>
+</body>
 </html>
