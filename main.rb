@@ -1,12 +1,12 @@
 # coding: utf-8
-require 'rubygems'
 require 'sinatra'
 require 'open-uri'
 require 'nokogiri'
-require 'pp'
 require 'json'
 
 configure do
+  set :root, File.dirname(__FILE__)
+  set :views, Proc.new { File.join(root, 'views') }
   include Rack::Utils
   alias :h :escape_html
 
