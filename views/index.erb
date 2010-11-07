@@ -1,0 +1,51 @@
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>犬検索</title>
+</head>
+<body>
+  <div id="search">
+    <form action="." method="post">
+<p>犬種：<br>
+<select name="kenshu">
+  <% @options.each do |opt| %>
+    <option value="<%=h opt[:value] %>"<%= 'selected' if params[:kenshu] == opt[:value]%>><%=h opt[:label] %></option>
+  <% end %>
+</select></p>
+      <input type="submit" name="keyword" value="検索">
+    </form>
+  </div>
+  
+  <% if @puppies.nil? %>
+    <p>犬種を選んで検索ボタンを押してください。</p>
+  <% elsif @puppies.length == 0 %>
+    <p>検索結果が見つかりませんでした。</p>
+  <% else %>
+  <br>
+  <div id="result">
+<table border="1" width="800" cellspacing="0" cellpadding="5" bordercolor="#333333">
+<tr>
+	<th>写真</th>
+	<th>詳細</th>
+</tr>
+
+<% @puppies.each do |puppy| %>
+<tr>
+	<td><img border="0" src="<%=h puppy[:image] %>" alt="犬１"></td>
+	<td bgcolor="#FFFFFF" valign="top" >
+	    <a href=<%=h puppy[:url] %>>詳細ページへ</a><br>
+        <b>色 :</b> <%=h puppy[:color] %><br>
+        <b>出生地（都道府県）：</b><%=h puppy[:place] %><br>
+        <b>価格：</b><%=h puppy[:price] %><br>
+        <b>誕生日：</b><%=h puppy[:birth] %><br>
+        <b>紹介文：</b><%=h puppy[:comment] %>
+	</td>
+</tr>
+<% end %>
+
+</table>
+  </div>
+  <% end %>
+  <a href="#top">▲このページのTOPへ</a>
+  </body>
+</html>
