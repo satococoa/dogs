@@ -1,7 +1,9 @@
+# coding: utf-8
 require 'sinatra'
 require 'open-uri'
 require 'nokogiri'
 require 'pp'
+require 'json'
 
 configure do
   include Rack::Utils
@@ -10,9 +12,11 @@ configure do
   result = open('http://dog.indivision.jp/api/breed').read
   doc = Nokogiri::XML(result)
   @@options = []
+  @@kenshu = {}
   doc.search('breed').each do |breed|
     opt = { :label => breed.search('name').text, :value => breed.search('cd').text }
     @@options << opt
+    @@kenshu[breed.search('cd').text.to_i] = breed.search('name').text
   end
 end
 
@@ -41,5 +45,10 @@ post '/' do
     }
     @puppies << puppy
   end
+  
+  # Youtubeの動画を取得
+  youtube_base = 'http://gdata.youtube.com/feeds/api/videos?alt=json&max-results=10&vq='+
+    escape(@@kenshu[params[:kenshu].to_i])
+  movies = JSON.parse(open(youtube_base).read)
   erb :index
 end
