@@ -2,23 +2,24 @@
 <head>
 	<meta charset="utf-8">
 	<title>わんちゃんを探そう！</title>
+	<link rel="stylesheet" href="/css/labels.css" type="text/css" media="screen">
+	<link rel="stylesheet" href="/css/styles.css" type="text/css" media="screen">
+	<script src="/js/scripts.js" type="text/javascript"></script>
 </head>
 <body>
+	<h1 id="logo" class="menuLineDoubleLightW">わんちゃんを探そう！</h1>
 	<div id="search">
 		<form action="." method="post">
-			<p>犬種：<br>
-				<select name="kenshu">
+			<p class="menuLine">Step1 好きな犬種を選んでみよう！</p>
+				<select id="kenshu" name="kenshu">
 					<% @options.each do |opt| %>
-					<option value="<%=h opt[:value] %>"<%= 'selected' if params[:kenshu] == opt[:value]%>><%=h opt[:label] %></option>
+					<option value="<%=h opt[:value] %>"<%= 'selected' if @kenshu_id == opt[:value]%>><%=h opt[:label] %></option>
 					<% end %>
 				</select>
-			</p>
-			<input type="submit" name="keyword" value="検索">
 		</form>
 	</div>
 
 	<% if @puppies.nil? %>
-	<p>犬種を選んで検索ボタンを押してください。</p>
 	<% elsif @puppies.length == 0 %>
 	<p>検索結果が見つかりませんでした。</p>
 	<% else %>
@@ -32,6 +33,7 @@
 	  // The Following div element will end up holding the Video Search Control.
 	  // You can place this anywhere on your page.
 	  -->
+	  <p class="menuLine">Step2 どんなわんちゃんか、動画を見てみよう！</p>
 	  <div id="videoControl">
 	    <span style="color:#676767;font-size:11px;margin:10px;padding:4px;">Loading...</span>
 	  </div>
@@ -49,14 +51,6 @@
 	  <style type="text/css">
 	    @import url("http://www.google.com/uds/css/gsearch.css");
 	  </style>
-	<style>
-	#videoControl {
-		width: 800px;
-	}
-	#videoControl .searchForm_gsvsc {
-		display: none !important;
-	}
-	</style>
 	  <!-- Video Search Control and Stylesheet -->
 	  <script type="text/javascript">
 	    window._uds_vsw_donotrepair = true;
@@ -74,7 +68,7 @@
 	      };
 	      var videoSearch = new GSvideoSearchControl(
 	                              document.getElementById("videoControl"),
-	                              [{ query : "<%= @kenshu || 'dogs' %>"}], null, null, options);
+	                              [{ query : "<%= @kenshu || 'わんこ' %>"}], null, null, options);
 	    }
 	    // arrange for this function to be called during body.onload
 	    // event processing
@@ -82,8 +76,9 @@
 	  </script>
 	<!-- --End Video Search Control Wizard Generated Code-- -->
 	<br>
+	<p class="menuLine">Step3 気に入ったわんちゃんをおうちにお迎えしよう！</p>
 	<div id="result">
-		<table border="1" width="800" cellspacing="0" cellpadding="5" bordercolor="#333333">
+		<table>
 			<tr>
 				<th>写真</th>
 				<th>詳細</th>

@@ -20,31 +20,39 @@ configure do
   end
 end
 
-get '/' do
-  @options = @@options
-  erb :index
-end
-
-post '/' do
-  @options = @@options
+def get_dogs(breed)
   url = 'http://dog.indivision.jp/api/puppy'
-  breed = params[:kenshu]
   result = open(url+'?breed='+escape(breed)).read
   doc = Nokogiri::XML(result)
-  @puppies = []
+  puppies = []
   doc.search('puppy').each do |puppy|
     puppy = {
       :url => puppy.search('url').text,
       :puppy_name => puppy.search('puppy_name').text,
       :color => puppy.search('color').text,
       :place => puppy.search('place').text,
-      :price => puppy.search('price').text,
+      :price => '￥'+puppy.search('price').text.to_s.reverse.gsub(/(\d{3})(?=\d)/, '\1,').reverse,
       :birth => puppy.search('birth').text,
       :image => puppy.search('image/middle')[0].text,
       :comment => puppy.search('comment')[0].text
     }
-    @puppies << puppy
+    puppies << puppy
   end
-  @kenshu = @@kenshu[params[:kenshu].to_i]
+  puppies
+end
+
+get '/' do
+  @options = @@options
+  @kenshu_id = '1193'
+  @puppies = get_dogs(@kenshu_id)
+  @kenshu = @@kenshu[@kenshu_id.to_i]
+  erb :index
+end
+
+post '/' do
+  @options = @@options
+  @kenshu_id = params[:kenshu]
+  @puppies = get_dogs(@kenshu_id)
+  @kenshu = @@kenshu[@kenshu_id.to_i]
   erb :index
 end

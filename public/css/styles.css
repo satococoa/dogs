@@ -1,0 +1,26 @@
+#logo {
+	font-size: 150%;
+}
+
+#videoControl {
+	width: 800px;
+}
+
+#videoControl .searchForm_gsvsc {
+	display: none !important;
+}
+
+#result table {
+	width: 800px;
+	border-collapse: collapse;
+}
+
+#result table td,
+#result table th {
+	border: 1px solid #f79708;
+	padding: 10px;
+}
+
+#result table th {
+	color: #666;
+}

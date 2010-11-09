@@ -1,0 +1,155 @@
+.menuLineDoubleLightW {
+	margin:0 0 10px 0;
+	padding:2px 8px;
+	border-width:5px 0;
+	border-color:#f79708;
+	border-style:solid;
+	background:#fff;
+	color:#d25c14;
+	line-height:140%;
+	font-weight:bold;
+	text-align:center;
+}
+
+.menuRibbon {
+	margin:0 0 10px 0;
+	padding:2px 8px;
+	background:#f79708;
+	color:#F9F3EC;
+	line-height:140%;
+	font-weight:bold;
+}
+
+.menuRibbonLight {
+	margin:0 0 10px 0;
+	padding:2px 8px;
+	background:#febe25;
+	color:#d25c14;
+	line-height:140%;
+	font-weight:bold;
+}
+
+.menuTab {
+	margin:0 0 10px 0;
+	padding:2px 8px;
+	border-width:0 0 0 5px;
+	border-color: #febe25;
+	border-style:solid;
+	background:#f79708;
+	color:#F9F3EC;
+	line-height:140%;
+	font-weight:bold;
+}
+
+.menuTabLight {
+	margin:0 0 10px 0;
+	padding:2px 8px;
+	border-width:0 0 0 5px;
+	border-color:#f79708;
+	border-style:solid;
+	background:#febe25;
+	color:#d25c14;
+	line-height:140%;
+	font-weight:bold;
+}
+
+.menuTabDouble {
+	margin:0 0 10px 0;
+	padding:2px 8px;
+	border-width:0 5px;
+	border-color: #febe25;
+	border-style:solid;
+	background:#f79708;
+	color:#F9F3EC;
+	line-height:140%;
+	font-weight:bold;
+	text-align:center;
+}
+
+.menuTabDoubleLight {
+	margin:0 0 10px 0;
+	padding:2px 8px;
+	border-width:0 5px;
+	border-color:#f79708;
+	border-style:solid;
+	background:#febe25;
+	color:#d25c14;
+	line-height:140%;
+	font-weight:bold;
+	text-align:center;
+}
+
+.menuLine {
+	margin:0 0 10px 0;
+	padding:2px 8px;
+	border-width:0 0 5px 0;
+	border-color: #febe25;
+	border-style:solid;
+	background:#f79708;
+	color:#F9F3EC;
+	line-height:140%;
+	font-weight:bold;
+}
+
+.menuLineLight {
+	margin:0 0 10px 0;
+	padding:2px 8px;
+	border-width:0 0 5px 0 ;
+	border-color:#f79708;
+	border-style:solid;
+	background:#febe25;
+	color:#d25c14;
+	line-height:140%;
+	font-weight:bold;
+}
+
+.menuLineDouble {
+	margin:0 0 10px 0;
+	padding:2px 8px;
+	border-width:5px 0;
+	border-color: #febe25;
+	border-style:solid;
+	background:#f79708;
+	color:#F9F3EC;
+	line-height:140%;
+	font-weight:bold;
+	text-align:center;
+}
+
+.menuLineDoubleLightW {
+	margin:0 0 10px 0;
+	padding:2px 8px;
+	border-width:5px 0;
+	border-color:#f79708;
+	border-style:solid;
+	background:#fff;
+	color:#d25c14;
+	line-height:140%;
+	font-weight:bold;
+	text-align:center;
+}
+
+.menuLineDoubleLight {
+	margin:0 0 10px 0;
+	padding:2px 8px;
+	border-width:5px 0;
+	border-color:#f79708;
+	border-style:solid;
+	background:#febe25;
+	color:#d25c14;
+	line-height:140%;
+	font-weight:bold;
+	text-align:center;
+}
+
+.menuLineLightW {
+	margin:0 0 10px 0;
+	padding:2px 8px;
+	border-width:0 0 5px 0 ;
+	border-color:#f79708;
+	border-style:solid;
+	background:#fff;
+	color:#d25c14;
+	line-height:140%;
+	font-weight:bold;
+}
